@@ -31,6 +31,7 @@ const (
 	// Delimiters
 	COMMA     = ","
 	SEMICOLON = ";"
+	STRING    = "STRING"
 
 	LPAREN = "("
 	RPAREN = ")"
