@@ -27,6 +27,8 @@ Supported data types :
 
 - len() -> returns the length of the string or the array
 - push() -> adds the element to the end of the array
+- join() -> join two arrays into a single array 
+- delete() -> returns the array without the deleted item
 - print() -> prints the data to console
 - exit() -> program will panic
 
