@@ -46,17 +46,11 @@ var builtins = map[string]*object.Builtin{
 	},
 	"exit": &object.Builtin{
 		Fn: func(args ...object.Object) object.Object {
-			if len(args) != 1 {
-				return newError("wrong number of arguments. got=%d, want=1", len(args))
-			}
-
-			switch arg := args[0].(type) {
-			case *object.Integer:
-				fmt.Printf("exit with status code %d", arg.Value)
-				panic(arg.Value)
-			default:
-				return newError("invalid argument")
-			}
+			for _, arg := range args {
+                fmt.Print(arg.Inspect() + " ")
+            }
+            fmt.Println()
+            return nil
 		},
 	},
 	"push": &object.Builtin{
