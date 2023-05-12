@@ -1,14 +1,17 @@
-/* Lexer Documentation
+/*
+	Lexer Documentation
+
 The package lexer has a single exported struct type called Lexer. It represents the lexical analyzer, which takes source code as input and identifies a series of tokens, which are passed on to the parser for building an Abstract Syntax Tree (AST).
 
-Data Structure
+# Data Structure
 
-type Lexer struct {
-    input        string // The input source code
-    position     int    // The current position in input (points to the current char)
-    readPosition int    // The current reading position in input (after the current char)
-    ch           byte   // The current char under examination
-}
+	type Lexer struct {
+	    input        string // The input source code
+	    position     int    // The current position in input (points to the current char)
+	    readPosition int    // The current reading position in input (after the current char)
+	    ch           byte   // The current char under examination
+	}
+
 Lexer is composed of four fields:
 
 input: This is the input source code.
@@ -50,6 +53,5 @@ This private helper function checks if a byte is a valid letter used in programm
 
 isDigit(ch byte) bool
 This private helper function checks if a byte is a decimal digit (0-9).
-
 */
 package lexer

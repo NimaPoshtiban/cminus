@@ -1,4 +1,6 @@
-/* AST Package Documentation
+/*
+	AST Package Documentation
+
 The ast package defines different types of nodes that interoperate with the lexer and parser in order to build an Abstract Syntax Tree (AST) for the input program.
 
 Types:

@@ -47,10 +47,10 @@ var builtins = map[string]*object.Builtin{
 	"exit": &object.Builtin{
 		Fn: func(args ...object.Object) object.Object {
 			for _, arg := range args {
-                fmt.Print(arg.Inspect() + " ")
-            }
-            fmt.Println()
-            return nil
+				fmt.Print(arg.Inspect() + " ")
+			}
+			fmt.Println()
+			return nil
 		},
 	},
 	"push": &object.Builtin{

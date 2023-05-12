@@ -6,20 +6,6 @@ Integers (no floats)
 Boolean (true, false)
 Strings (enclosed with double quotes)
 
-  <!-- ,----..                         
- /   /   \                        
-|   :     :     ,---,.     ,---,. 
-.   |  ;. /   ,'  .' |   ,'  .' | 
-.   ; /--`  ,---.'   , ,---.'   , 
-;   | ;     |   |    | |   |    | 
-|   : |     :   :  .'  :   :  .'  
-.   | '___  :   |.'    :   |.'    
-'   ; : .'| `---'      `---'      
-'   | '/  :                       
-|   :    /                        
- \   \ .'                         
-  `---`                           
-                                 -->
 
 ## Built-in Functions :
 
@@ -50,7 +36,10 @@ The following built-in functions are currently available to use:
   ```
   let numbers = [1,3,7,9]
   ```
-
+- Using Hashes:
+  ```
+  let people = [{"name": "Alice", "age": 24}, {"name": "Anna", "age": 28}];
+  ```
 #### Interpret a file
 
 ```
