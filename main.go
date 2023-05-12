@@ -22,7 +22,7 @@ func main() {
 		file := os.Stdin
 
 		// Pass the file object to the REPL.
-		repl.Start(file, os.Stdout)
+		repl.Interpret(file, os.Stdout)
 	} else {
 		// There is no input from a pipe or a file.
 		repl.Start(os.Stdin, os.Stdout)

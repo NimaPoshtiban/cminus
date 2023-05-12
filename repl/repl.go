@@ -50,6 +50,34 @@ func Start(in io.Reader, out io.Writer) {
 	}
 }
 
+func Interpret(in io.Reader, out io.Writer) {
+	scanner := bufio.NewScanner(in)
+	env := object.NewEnvironment()
+	lineNumber := 0
+	for {
+		lineNumber++
+		// fmt.Printf("%d) %s ", lineNumber, Prompt)
+		scanned := scanner.Scan()
+		if !scanned {
+			return
+		}
+		line := scanner.Text()
+		l := lexer.New(line)
+		p := parser.New(l)
+
+		program := p.ParseProgram()
+
+		if len(p.Errors()) != 0 {
+			fmt.Printf("Error at line %d",lineNumber)
+			printParseErrors(out, p.Errors())
+			continue
+		}
+
+		_ = evaluator.Eval(program, env)
+		
+	}
+}
+
 func printParseErrors(out io.Writer, errors []string) {
 	io.WriteString(out, C_MINUS_MINUS)
 	io.WriteString(out, "\nWoops! We ran into some C-- business here!\n")
