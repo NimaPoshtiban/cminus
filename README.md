@@ -22,19 +22,19 @@ The following built-in functions are currently available to use:
 
 - Defining a variable:
   ```
-  let foo = 20
+  let foo = 20;
   ```
 - Defining a function:
   ```
-  let sum = fn(x,y) { x + y }
+  let sum = fn(x,y) { x + y };
   ```
 - Using recursion:
   ```
-  let factorial = fn(n) { if (n == 0) { 1 } else { n * factorial(n - 1) } }
+  let factorial = fn(n) { if (n == 0) { 1 } else { n * factorial(n - 1) } };
   ```
 - Using Arrays:
   ```
-  let numbers = [1,3,7,9]
+  let numbers = [1,3,7,9];
   ```
 - Using Hashes:
   ```
