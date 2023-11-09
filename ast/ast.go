@@ -53,18 +53,19 @@ func (ls *LetStatement) statementNode()       {}
 func (ls *LetStatement) TokenLiteral() string { return ls.Token.Literal }
 
 func (ls *LetStatement) String() string {
-	var out bytes.Buffer
+	var sb strings.Builder
 
-	out.WriteString(ls.TokenLiteral() + " ")
-	out.WriteString(ls.Name.String())
-	out.WriteString(" = ")
+	sb.WriteString(ls.TokenLiteral())
+	sb.WriteString(" ")
+	sb.WriteString(ls.Name.String())
+	sb.WriteString(" = ")
 
 	if ls.Value != nil {
-		out.WriteString(ls.Value.String())
+		sb.WriteString(ls.Value.String())
 	}
-	out.WriteString(";")
+	sb.WriteString(";")
 
-	return out.String()
+	return sb.String()
 }
 
 type Identifier struct {

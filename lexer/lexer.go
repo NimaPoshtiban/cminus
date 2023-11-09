@@ -15,6 +15,16 @@ func New(input string) *Lexer {
 	return l
 }
 
+// NextToken returns the next token from the lexer.
+//
+// It skips whitespace characters and then checks the value of the current
+// character to determine the token type. It handles various cases, such as
+// assignment, comparison, arithmetic operations, punctuation, and literals
+// like strings and numbers. The function returns the token and moves the
+// lexer's position to the next character.
+//
+// The function does not take any parameters.
+// It returns a token.Token struct representing the next token.
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token
 
@@ -73,19 +83,18 @@ func (l *Lexer) NextToken() token.Token {
 	case 0:
 		tok.Literal = ""
 		tok.Type = token.EOF
+	case 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '_':
+		tok.Literal = l.readIdentifier()
+		tok.Type = token.LookupIdent(tok.Literal)
+		return tok
+	case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
+		tok.Type = token.INT
+		tok.Literal = l.readNumber()
+		return tok
 	default:
-		if isLetter(l.ch) {
-			tok.Literal = l.readIdentifier()
-			tok.Type = token.LookupIdent(tok.Literal)
-			return tok
-		} else if isDigit(l.ch) {
-			tok.Type = token.INT
-			tok.Literal = l.readNumber()
-			return tok
-		} else {
-			tok = newToken(token.ILLEGAL, l.ch)
-		}
+		tok = newToken(token.ILLEGAL, l.ch)
 	}
+
 	l.readChar()
 	return tok
 }

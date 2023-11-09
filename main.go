@@ -5,26 +5,27 @@ import (
 	"interpreter/repl"
 	"os"
 	"os/user"
+	"log"
 )
 
 func main() {
 	user, err := user.Current()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
+
 	fmt.Printf("Hello %s! This is the C-- programming language!\n", user.Username)
-	fmt.Printf("Feel free to type in commands\n")
+	fmt.Println("Feel free to type in commands")
 
-	// Check if there is any input from standard input.
-	info, _ := os.Stdin.Stat()
-	if (info.Mode() & os.ModeCharDevice) == 0 {
-		// There is input from a pipe or a file.
-		file := os.Stdin
-
-		// Pass the file object to the REPL.
-		repl.Interpret(file, os.Stdout)
-	} else {
-		// There is no input from a pipe or a file.
+	if !isInputFromPipe() {
 		repl.Start(os.Stdin, os.Stdout)
+	} else {
+		file := os.Stdin
+		repl.Interpret(file, os.Stdout)
 	}
+}
+
+func isInputFromPipe() bool {
+	info, _ := os.Stdin.Stat()
+	return (info.Mode() & os.ModeCharDevice) == 0
 }

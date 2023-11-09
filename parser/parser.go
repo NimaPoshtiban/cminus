@@ -50,6 +50,13 @@ type Parser struct {
 	infixParseFns  map[token.TokenType]infixParseFn
 }
 
+// New initializes a new Parser using the given Lexer.
+//
+// Parameters:
+// - l: A pointer to a Lexer.
+//
+// Returns:
+// - p: A pointer to the initialized Parser.
 func New(l *lexer.Lexer) *Parser {
 	p := &Parser{l: l, errors: []string{}}
 
@@ -78,7 +85,7 @@ func New(l *lexer.Lexer) *Parser {
 	p.registerPrefix(token.STRING, p.parseStringLiteral)
 	p.registerPrefix(token.LBRACKET, p.parseArrayLiteral)
 	p.registerPrefix(token.LBRACE, p.parseHashLiteral)
-	// read two token, so curToken and peekToken are both set
+
 	p.nextToken()
 	p.nextToken()
 
@@ -95,8 +102,9 @@ func (p *Parser) nextToken() {
 }
 
 func (p *Parser) ParseProgram() *ast.Program {
-	program := &ast.Program{}
-	program.Statements = []ast.Statement{}
+	program := &ast.Program{
+		Statements: []ast.Statement{},
+	}
 
 	for p.curToken.Type != token.EOF {
 		stmt := p.parseStatement()
@@ -105,6 +113,7 @@ func (p *Parser) ParseProgram() *ast.Program {
 		}
 		p.nextToken()
 	}
+
 	return program
 }
 
