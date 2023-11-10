@@ -1,6 +1,6 @@
 # interpreter
 
-This is an interpreter for a minimal dynamically-typed programming language. It currently supports the following data types:
+This is an interpreter for a minimal dynamically typed programming language. It currently supports the following data types:
 
 Integers (no floats)
 Boolean (true, false)
@@ -17,6 +17,8 @@ The following built-in functions are currently available to use:
 - delete() -> returns the array without the deleted item.
 - print() -> prints the data to console.
 - exit() -> exits the program by causing it to panic.
+- cmd() -> execute system command
+- info() -> returns system info
 
 ### Syntax
 

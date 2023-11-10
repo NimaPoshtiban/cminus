@@ -5,6 +5,10 @@ package evaluator
 import (
 	"fmt"
 	"interpreter/object"
+	"log"
+	"os"
+	"os/exec"
+	"runtime"
 )
 
 var builtins = map[string]*object.Builtin{
@@ -49,7 +53,7 @@ var builtins = map[string]*object.Builtin{
 			for _, arg := range args {
 				fmt.Print(arg.Inspect() + " ")
 			}
-			fmt.Println()
+			log.Println()
 			return nil
 		},
 	},
@@ -113,6 +117,39 @@ var builtins = map[string]*object.Builtin{
 			copy(newElements, arr1.Elements)
 			copy(newElements[len(arr1.Elements):], arr2.Elements)
 			return &object.Array{Elements: newElements}
+		},
+	},
+	"cmd": {
+		Fn: func(args ...object.Object) object.Object {
+			if len(args) == 0 {
+				return newError("wrong number of arguments. got=%d, want=1 or more", len(args))
+			}
+			for i := 0; i < len(args); i++ {
+				if args[i].Type() != object.STRING_OBJ {
+					return newError("argument to `cmd` must be STRING, got=%s", args[i].Type())
+				}
+			}
+			str := args[0].(*object.String)
+			cmd := exec.Command(str.Value)
+			out, _ := cmd.Output()
+			if err := cmd.Run(); err != nil {
+				log.Println(err)
+			}
+
+			return &object.String{Value: string(out)}
+		},
+	},
+	"info": {
+		Fn: func(args ...object.Object) object.Object {
+			if len(args) != 0 {
+				return newError("wrong number of arguments. got=%d, want=0 or more", len(args))
+			}
+			host, _ := os.Hostname()
+			arch := runtime.GOARCH
+			cpu := runtime.NumCPU()
+			os := runtime.GOOS
+			out := fmt.Sprintf(" Hotname: %s\n\tArchitecture: %s\n\tCpu Cores: %d\n\tOperating System: %s", host, arch, cpu, os)
+			return &object.String{Value: out}
 		},
 	},
 }
