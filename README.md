@@ -29,11 +29,11 @@ The following built-in functions are currently available to use:
   ```
 - Defining a function:
   ```
-  let sum = fn(x,y) { x + y };
+  let sum = func(x,y) { x + y };
   ```
 - Using recursion:
   ```
-  let factorial = fn(n) { if (n == 0) { 1 } else { n * factorial(n - 1) } };
+  let factorial = func(n) { if (n == 0) { 1 } else { n * factorial(n - 1) } };
   ```
 - Using Arrays:
   ```

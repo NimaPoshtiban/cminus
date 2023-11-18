@@ -44,7 +44,7 @@ const (
 	COLON = ":"
 	// keywords
 
-	FUNCTION = "fn"
+	FUNCTION = "func"
 	LET      = "let"
 	TRUE     = "true"
 	FALSE    = "false"
@@ -55,7 +55,7 @@ const (
 
 // language keywords
 var keywords = map[string]TokenType{
-	"fn":     FUNCTION,
+	"func":   FUNCTION,
 	"let":    LET,
 	"true":   TRUE,
 	"false":  FALSE,
