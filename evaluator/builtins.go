@@ -119,7 +119,7 @@ var builtins = map[string]*object.Builtin{
 			return &object.Array{Elements: newElements}
 		},
 	},
-	"cmd": {
+	"exec": {
 		Fn: func(args ...object.Object) object.Object {
 			if len(args) == 0 {
 				return newError("wrong number of arguments. got=%d, want=1 or more", len(args))
@@ -148,8 +148,28 @@ var builtins = map[string]*object.Builtin{
 			arch := runtime.GOARCH
 			cpu := runtime.NumCPU()
 			os := runtime.GOOS
-			out := fmt.Sprintf(" Hotname: %s\n\tArchitecture: %s\n\tCpu Cores: %d\n\tOperating System: %s", host, arch, cpu, os)
+			out := fmt.Sprintf("Hostname: %s\n\tArchitecture: %s\n\tCpu Cores: %d\n\tOperating System: %s", host, arch, cpu, os)
 			return &object.String{Value: out}
+		},
+	},
+	"flush": {
+		Fn: func(args ...object.Object) object.Object {
+			return &object.String{Value: "\033[H\033[2J"}
+		},
+	},
+	"help": {
+		Fn: func(args ...object.Object) object.Object {
+			return &object.String{Value: `
+				len() -> returns the length of the string or the array.
+				push() -> adds the element to the end of the array.
+				join() -> join two arrays into a single array.
+				delete() -> returns the array without the deleted item.
+				print() -> prints the data to the console.
+				exit() -> exits the program by causing it to panic.
+				exec() -> execute system command
+				info() -> returns system info
+				flush() -> clears the console
+										`}
 		},
 	},
 }

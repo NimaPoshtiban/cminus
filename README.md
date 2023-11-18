@@ -15,10 +15,11 @@ The following built-in functions are currently available to use:
 - push() -> adds the element to the end of the array.
 - join() -> join two arrays into a single array.
 - delete() -> returns the array without the deleted item.
-- print() -> prints the data to console.
+- print() -> prints the data to the console.
 - exit() -> exits the program by causing it to panic.
-- cmd() -> execute system command
+- exec() -> execute system command
 - info() -> returns system info
+- flush() -> clears the console
 
 ### Syntax
 
