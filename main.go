@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"interpreter/repl"
+	"log"
 	"os"
 	"os/user"
-	"log"
 )
 
 func main() {

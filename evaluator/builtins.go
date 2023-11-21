@@ -3,6 +3,7 @@
 package evaluator
 
 import (
+	"encoding/json"
 	"fmt"
 	"interpreter/object"
 	"log"
@@ -157,6 +158,42 @@ var builtins = map[string]*object.Builtin{
 			return &object.String{Value: "\033[H\033[2J"}
 		},
 	},
+	"jsonMarshal": {
+		Fn: func(args ...object.Object) object.Object {
+			if len(args) != 1 {
+				return newError("wrong number of arguments. got=%d, want=1", len(args))
+			}
+
+			jsonBytes, err := json.Marshal(args[0])
+			if err != nil {
+				return newError("failed to marshal object to JSON: %v", err)
+			}
+
+			return &object.String{Value: string(jsonBytes)}
+		},
+	},
+	"jsonUnmarshal": {
+		Fn: func(args ...object.Object) object.Object {
+			if len(args) != 1 {
+				return newError("wrong number of arguments. got=%d, want=1", len(args))
+			}
+
+			str, ok := args[0].(*object.String)
+			if !ok {
+				return newError("argument to `jsonUnmarshal` must be STRING, got=%s", args[0].Type())
+			}
+
+			var out map[string]interface{}
+			err := json.Unmarshal([]byte(str.Value), &out)
+			if err != nil {
+				return newError("failed to unmarshal JSON: %v", err)
+			}
+
+			return &object.Error{
+				Message: fmt.Sprintf("%v", out),
+			}
+		},
+	},
 	"help": {
 		Fn: func(args ...object.Object) object.Object {
 			return &object.String{Value: `
@@ -169,6 +206,8 @@ var builtins = map[string]*object.Builtin{
 				exec() -> execute system command
 				info() -> returns system info
 				flush() -> clears the console
+				jsonUnmarshal() -> Unmarshal JSON
+				jsonMarshal() -> Marshal JSON
 										`}
 		},
 	},

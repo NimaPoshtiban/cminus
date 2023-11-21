@@ -167,33 +167,33 @@ func evalStringInfixExpression(
 }
 
 func evalIntegerInfixExpression(operator string, left, right object.Object) object.Object {
-    // Extract the integer values from the left and right objects
-    leftVal := left.(*object.Integer).Value
-    rightVal := right.(*object.Integer).Value
-    
-    // Perform the appropriate operation based on the operator
-    switch operator {
-    case "+":
-        return &object.Integer{Value: leftVal + rightVal}
-    case "-":
-        return &object.Integer{Value: leftVal - rightVal}
-    case "*":
-        return &object.Integer{Value: leftVal * rightVal}
-    case "/":
-        return &object.Integer{Value: leftVal / rightVal}
-    case "<":
-        return nativeBoolToBooleanObject(leftVal < rightVal)
-    case ">":
-        return nativeBoolToBooleanObject(leftVal > rightVal)
-    case "==":
-        return nativeBoolToBooleanObject(leftVal == rightVal)
-    case "!=":
-        return nativeBoolToBooleanObject(leftVal != rightVal)
-    
-    default:
-        // Return an error if the operator is unknown
-        return newError("unknown operator: %s %s %s", left.Type(), operator, right.Type())
-    }
+	// Extract the integer values from the left and right objects
+	leftVal := left.(*object.Integer).Value
+	rightVal := right.(*object.Integer).Value
+
+	// Perform the appropriate operation based on the operator
+	switch operator {
+	case "+":
+		return &object.Integer{Value: leftVal + rightVal}
+	case "-":
+		return &object.Integer{Value: leftVal - rightVal}
+	case "*":
+		return &object.Integer{Value: leftVal * rightVal}
+	case "/":
+		return &object.Integer{Value: leftVal / rightVal}
+	case "<":
+		return nativeBoolToBooleanObject(leftVal < rightVal)
+	case ">":
+		return nativeBoolToBooleanObject(leftVal > rightVal)
+	case "==":
+		return nativeBoolToBooleanObject(leftVal == rightVal)
+	case "!=":
+		return nativeBoolToBooleanObject(leftVal != rightVal)
+
+	default:
+		// Return an error if the operator is unknown
+		return newError("unknown operator: %s %s %s", left.Type(), operator, right.Type())
+	}
 }
 
 func evalPrefixExpression(operator string, right object.Object) object.Object {
@@ -256,7 +256,7 @@ func isTruthy(obj object.Object) bool {
 }
 
 func newError(messageFormat string, args ...interface{}) *object.Error {
-    return &object.Error{Message: fmt.Sprintf(messageFormat, args...)}
+	return &object.Error{Message: fmt.Sprintf(messageFormat, args...)}
 }
 
 func isError(obj object.Object) bool {

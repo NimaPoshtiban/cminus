@@ -43,7 +43,9 @@ func Start(in io.Reader, out io.Writer) {
 		program := p.ParseProgram()
 
 		if len(p.Errors()) != 0 {
-			printParseErrors(out, p.Errors())
+			errs := p.Errors()
+			errs = append(errs, fmt.Sprintf("line %d", lineNumber))
+			printParseErrors(out, errs)
 			continue
 		}
 
@@ -95,7 +97,7 @@ func printParseErrors(out io.Writer, errors []string) {
 	red := "\033[31m"
 	reset := "\033[0m"
 
-	io.WriteString(out, red+"C_MINUS_MINUS"+reset)
+	io.WriteString(out, red+C_MINUS_MINUS+reset)
 	io.WriteString(out, "\nWoops! We ran into some C-- business here!\n")
 	io.WriteString(out, red+" parser errors:"+reset+"\n")
 	for _, msg := range errors {
