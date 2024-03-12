@@ -1,0 +1,5 @@
+let factorial = func(n) { if (n == 0) { 1 } else {n * factorial(n - 1)}  };
+
+print(factorial(8))
+
+let mod = func(x,y){if(y==0){return x } return x-y*(x/y)};
