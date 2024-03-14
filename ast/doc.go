@@ -89,6 +89,5 @@ TokenLiteral() string returns the literal value of the token.
 String() string returns the string representation of the PrefixExpression.
 InfixExpression struct
 The InfixExpression struct implements the Expression interface. It represents infix expressions in the input program like 1 + 2, a - b ,....
-
 */
 package ast

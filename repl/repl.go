@@ -32,6 +32,7 @@ func Start(in io.Reader, out io.Writer) {
 
 	scanner := bufio.NewScanner(in)
 	env := object.NewEnvironment()
+	macroEnv := object.NewEnvironment()
 	lineNumber := 0
 
 	for scanner.Scan() {
@@ -41,6 +42,7 @@ func Start(in io.Reader, out io.Writer) {
 		l := lexer.New(line)
 		p := parser.New(l)
 		program := p.ParseProgram()
+		evaluator.DefineMacros(program, macroEnv)
 
 		if len(p.Errors()) != 0 {
 			errs := p.Errors()
@@ -48,8 +50,14 @@ func Start(in io.Reader, out io.Writer) {
 			printParseErrors(out, errs)
 			continue
 		}
+		expanded := evaluator.ExpandMacros(program, macroEnv)
 
-		evaluated := evaluator.Eval(program, env)
+		evaluated := evaluator.Eval(expanded, env)
+		if evaluated != nil {
+			fmt.Fprintf(out, green+"%s"+reset+"\n", evaluated.Inspect())
+		}
+
+		evaluated = evaluator.Eval(program, env)
 		if evaluated != nil {
 			fmt.Fprintf(out, green+"%s"+reset+"\n", evaluated.Inspect())
 		}

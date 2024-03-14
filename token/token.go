@@ -43,7 +43,7 @@ const (
 
 	COLON = ":"
 	// keywords
-
+	MACRO    = "macro"
 	FUNCTION = "func"
 	LET      = "let"
 	TRUE     = "true"
@@ -56,6 +56,7 @@ const (
 // language keywords
 var keywords = map[string]TokenType{
 	"func":   FUNCTION,
+	"macro":  MACRO,
 	"let":    LET,
 	"true":   TRUE,
 	"false":  FALSE,
