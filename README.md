@@ -21,6 +21,10 @@ The following built-in functions are currently available to use:
 - info() -> returns system info
 - flush() -> clears the console
 
+## Built-in Macro Functions:
+- quote(expression) -> returns the unevaluated expression
+- unquote(expression) -> evaluate the expression inside quote
+
 ### Syntax
 
 - Defining a variable:
@@ -30,6 +34,7 @@ The following built-in functions are currently available to use:
 - Defining a function:
   ```
   let sum = func(x,y) { x + y };
+  let sum = func(x,y) { return x + y};
   ```
 - Using recursion:
   ```
@@ -42,6 +47,10 @@ The following built-in functions are currently available to use:
 - Using Hashes:
   ```
   let people = [{"name": "Alice", "age": 24}, {"name": "Anna", "age": 28}];
+  ```
+- Defining a macro:
+  ```
+  let unless = macro(condition, consequence, alternative){ quote(if (!(unquote(condition))) { unquote(consequence); }else { unquote(alternative); }); };
   ```
 #### Interpret a file
 
