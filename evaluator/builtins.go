@@ -3,7 +3,6 @@
 package evaluator
 
 import (
-	"encoding/json"
 	"fmt"
 	"interpreter/object"
 	"log"
@@ -31,22 +30,10 @@ var builtins = map[string]*object.Builtin{
 	},
 	"print": {
 		Fn: func(args ...object.Object) object.Object {
-			if len(args) != 1 {
-				return newError("wrong number of arguments. got=%d, want=1", len(args))
+			for _, arg := range args {
+				fmt.Println(arg.Inspect())
 			}
-
-			switch arg := args[0].(type) {
-
-			case *object.String:
-				fmt.Println(arg.Value)
-				return &object.Null{}
-			case *object.Integer:
-				str := fmt.Sprintf("%d", arg.Value)
-				fmt.Println(str)
-				return &object.Null{}
-			default:
-				return &object.Null{}
-			}
+			return &object.Null{}
 		},
 	},
 	"exit": {
@@ -158,42 +145,7 @@ var builtins = map[string]*object.Builtin{
 			return &object.String{Value: "\033[H\033[2J"}
 		},
 	},
-	"jsonMarshal": {
-		Fn: func(args ...object.Object) object.Object {
-			if len(args) != 1 {
-				return newError("wrong number of arguments. got=%d, want=1", len(args))
-			}
 
-			jsonBytes, err := json.Marshal(args[0])
-			if err != nil {
-				return newError("failed to marshal object to JSON: %v", err)
-			}
-
-			return &object.String{Value: string(jsonBytes)}
-		},
-	},
-	"jsonUnmarshal": {
-		Fn: func(args ...object.Object) object.Object {
-			if len(args) != 1 {
-				return newError("wrong number of arguments. got=%d, want=1", len(args))
-			}
-
-			str, ok := args[0].(*object.String)
-			if !ok {
-				return newError("argument to `jsonUnmarshal` must be STRING, got=%s", args[0].Type())
-			}
-
-			var out map[string]interface{}
-			err := json.Unmarshal([]byte(str.Value), &out)
-			if err != nil {
-				return newError("failed to unmarshal JSON: %v", err)
-			}
-
-			return &object.Error{
-				Message: fmt.Sprintf("%v", out),
-			}
-		},
-	},
 	"help": {
 		Fn: func(args ...object.Object) object.Object {
 			return &object.String{Value: `
