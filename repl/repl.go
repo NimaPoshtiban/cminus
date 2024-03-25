@@ -2,11 +2,11 @@ package repl
 
 import (
 	"bufio"
+	"cminus/evaluator"
+	"cminus/lexer"
+	"cminus/object"
+	"cminus/parser"
 	"fmt"
-	"interpreter/evaluator"
-	"interpreter/lexer"
-	"interpreter/object"
-	"interpreter/parser"
 	"io"
 )
 

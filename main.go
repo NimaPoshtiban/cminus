@@ -1,8 +1,8 @@
 package main
 
 import (
+	"cminus/repl"
 	"fmt"
-	"interpreter/repl"
 	"log"
 	"os"
 	"os/user"

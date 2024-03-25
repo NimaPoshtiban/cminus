@@ -3,8 +3,8 @@
 package evaluator
 
 import (
+	"cminus/object"
 	"fmt"
-	"interpreter/object"
 	"log"
 	"os"
 	"os/exec"

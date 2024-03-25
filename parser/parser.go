@@ -1,10 +1,10 @@
 package parser
 
 import (
+	"cminus/ast"
+	"cminus/lexer"
+	"cminus/token"
 	"fmt"
-	"interpreter/ast"
-	"interpreter/lexer"
-	"interpreter/token"
 	"strconv"
 )
 

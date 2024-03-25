@@ -1,8 +1,8 @@
 package evaluator
 
 import (
-	"interpreter/ast"
-	"interpreter/object"
+	"cminus/ast"
+	"cminus/object"
 )
 
 func DefineMacros(program *ast.Program, env *object.Environment) {

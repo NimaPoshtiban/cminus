@@ -1,9 +1,9 @@
 package parser
 
 import (
+	"cminus/ast"
+	"cminus/lexer"
 	"fmt"
-	"interpreter/ast"
-	"interpreter/lexer"
 	"testing"
 )
 

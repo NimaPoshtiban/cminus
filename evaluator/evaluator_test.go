@@ -1,9 +1,9 @@
 package evaluator
 
 import (
-	"interpreter/lexer"
-	"interpreter/object"
-	"interpreter/parser"
+	"cminus/lexer"
+	"cminus/object"
+	"cminus/parser"
 	"testing"
 )
 

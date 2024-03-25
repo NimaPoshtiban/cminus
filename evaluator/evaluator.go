@@ -1,9 +1,9 @@
 package evaluator
 
 import (
+	"cminus/ast"
+	"cminus/object"
 	"fmt"
-	"interpreter/ast"
-	"interpreter/object"
 )
 
 var (

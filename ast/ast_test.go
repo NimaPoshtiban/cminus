@@ -1,7 +1,7 @@
 package ast
 
 import (
-	"interpreter/token"
+	"cminus/token"
 	"testing"
 )
 

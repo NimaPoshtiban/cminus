@@ -1,10 +1,10 @@
 package evaluator
 
 import (
-	"interpreter/ast"
-	"interpreter/lexer"
-	"interpreter/object"
-	"interpreter/parser"
+	"cminus/ast"
+	"cminus/lexer"
+	"cminus/object"
+	"cminus/parser"
 	"testing"
 )
 

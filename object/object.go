@@ -3,9 +3,9 @@ package object
 
 import (
 	"bytes"
+	"cminus/ast"
 	"fmt"
 	"hash/fnv"
-	"interpreter/ast"
 	"strings"
 )
 

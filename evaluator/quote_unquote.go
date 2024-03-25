@@ -1,10 +1,10 @@
 package evaluator
 
 import (
+	"cminus/ast"
+	"cminus/object"
+	"cminus/token"
 	"fmt"
-	"interpreter/ast"
-	"interpreter/object"
-	"interpreter/token"
 )
 
 // quote will return the expression before evaluation
