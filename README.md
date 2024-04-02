@@ -1,6 +1,6 @@
 # cminus
 
-This is an cminus for a minimal dynamically typed programming language. It currently supports the following data types:
+This is an interpreter for a minimal dynamically typed programming language. It currently supports the following data types:
 
 Integers (no floats)
 Boolean (true, false)
