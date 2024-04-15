@@ -53,9 +53,6 @@ func Start(in io.Reader, out io.Writer) {
 		expanded := evaluator.ExpandMacros(program, macroEnv)
 
 		evaluated := evaluator.Eval(expanded, env)
-		if evaluated != nil {
-			fmt.Fprintf(out, green+"%s"+reset+"\n", evaluated.Inspect())
-		}
 
 		evaluated = evaluator.Eval(program, env)
 		if evaluated != nil {
