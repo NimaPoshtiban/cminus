@@ -1,0 +1,31 @@
+<program> ::= <statement> | <statement> <program>
+<statement> ::= <variable_definition> | <function_definition> | <array_definition> | <hash_definition> | <macro_definition>
+<variable_definition> ::= "let" <identifier> "=" <expression> ";"
+<function_definition> ::= "let" <identifier> "=" "func" "(" <parameters> ")" "{" <expression> "}" ";"
+<array_definition> ::= "let" <identifier> "=" "[" <array_elements> "]" ";"
+<hash_definition> ::= "let" <identifier> "=" "{" <hash_elements> "}" ";"
+<macro_definition> ::= "let" <identifier> "=" "macro" "(" <parameters> ")" "{" <expression> "}" ";"
+<parameters> ::= <identifier> | <identifier> "," <parameters>
+<array_elements> ::= <expression> | <expression> "," <array_elements>
+<hash_elements> ::= <hash_element> | <hash_element> "," <hash_elements>
+<hash_element> ::= "{" "\"" <property> "\"" ":" <expression> "}"
+<property> ::= <identifier>
+<expression> ::= <term> | <expression> <operator> <term>
+<term> ::= <value> | <identifier> | <function_call> | <array_access> | <hash_access> | "(" <expression> ")"
+<function_call> ::= <identifier> "(" <arguments> ")"
+<arguments> ::= <expression> | <expression> "," <arguments>
+<array_access> ::= <identifier> "[" <expression> "]"
+<hash_access> ::= <identifier> "[" <expression> "]"
+<operator> ::= "+" | "*" | "/" | "==" | "!=" | ">" | "<" | ">=" | "<=" | "!"
+<value> ::= <number> | <string> | <boolean>
+<number> ::= <digit> | <digit> <number>
+<string> ::= "\"" <characters> "\""
+<characters> ::= <character> | <character> <characters>
+<character> ::= <letter> | <digit> | <special_character>
+<boolean> ::= "true" | "false"
+<identifier> ::= <letter> <identifier_body>
+<letter> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "_"
+<identifier_body> ::= <letter> <identifier_body>*
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<special_character> ::= "+" | "-" | "*" | "/" | "=" | "<" | ">" | "(" | ")" | "[" | "]" | "{" | "}" | "." | "_" | "," | ";" | ":" | "'" | "\"" | "\\"
+<condition> ::= <expression>
