@@ -9,7 +9,7 @@ on:
   push:
     branches: [ "master" ]
     tags:
-      - 'v*.*.*'
+      - 'version*.*.*'
   pull_request:
     branches: [ "master" ]
 
