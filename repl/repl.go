@@ -8,6 +8,7 @@ import (
 	"cminus/parser"
 	"fmt"
 	"io"
+	"os"
 )
 
 const C_MINUS_MINUS = `                                                                                                       
@@ -52,9 +53,9 @@ func Start(in io.Reader, out io.Writer) {
 		}
 		expanded := evaluator.ExpandMacros(program, macroEnv)
 
-		evaluated := evaluator.Eval(expanded, env)
+		evaluator.Eval(expanded, env)
 
-		evaluated = evaluator.Eval(program, env)
+		evaluated := evaluator.Eval(program, env)
 		if evaluated != nil {
 			fmt.Fprintf(out, green+"%s"+reset+"\n", evaluated.Inspect())
 		}
@@ -78,24 +79,20 @@ func Start(in io.Reader, out io.Writer) {
 //   - Evaluates the AST using the evaluator.
 //
 // The function does not return anything.
-func Interpret(input io.Reader, output io.Writer) {
-	scanner := bufio.NewScanner(input)
+func Interpret(filename string, output io.Writer) {
+	text, _ := os.ReadFile(filename)
 	env := object.NewEnvironment()
 
-	for scanner.Scan() {
-		line := scanner.Text()
-		l := lexer.New(line)
-		p := parser.New(l)
+	l := lexer.New(string(text))
+	p := parser.New(l)
 
-		program := p.ParseProgram()
+	program := p.ParseProgram()
 
-		if len(p.Errors()) != 0 {
-			fmt.Fprintf(output, "Error: %s\n", p.Errors()[0])
-			continue
-		}
-
-		_ = evaluator.Eval(program, env)
+	if len(p.Errors()) != 0 {
+		fmt.Fprintf(output, "Error: %s\n", p.Errors()[0])
 	}
+
+	evaluator.Eval(program, env)
 }
 
 func printParseErrors(out io.Writer, errors []string) {
@@ -103,7 +100,7 @@ func printParseErrors(out io.Writer, errors []string) {
 	reset := "\033[0m"
 
 	io.WriteString(out, red+C_MINUS_MINUS+reset)
-	io.WriteString(out, "\nWoops! We ran into some C-- business here!\n")
+	io.WriteString(out, "\nWoops! We ran into some C- business here!\n")
 	io.WriteString(out, red+" parser errors:"+reset+"\n")
 	for _, msg := range errors {
 		io.WriteString(out, red+"\t"+msg+"\t"+reset+"\n")

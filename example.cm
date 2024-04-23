@@ -1,5 +1,21 @@
-let factorial = func(n) { if (n == 0) { 1 } else {n * factorial(n - 1)}  };
-
-print(factorial(8))
-
-let mod = func(x,y){if(y==0){return x } return x-y*(x/y)};
+print("Testing interpretation proccess...")
+let factorial = func(n) {
+     if (n == 0) {
+         1 
+    }
+    else {
+        n * factorial(n - 1)
+    }
+};
+let result = factorial(8)
+let mod = func(x,y){
+    if(y==0){
+        return x 
+    }
+    return x-y*(x/y)
+};
+if(mod(result,2)==0){
+    print("number is even")
+}else{
+    print("number is odd")
+}

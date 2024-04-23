@@ -2,6 +2,7 @@ package main
 
 import (
 	"cminus/repl"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -9,19 +10,22 @@ import (
 )
 
 func main() {
+
 	user, err := user.Current()
 	if err != nil {
 		log.Fatal(err)
 	}
+	var filename string
+	flag.StringVar(&filename, "interpret", "", "interpret the given file")
+	flag.Parse()
 
-	fmt.Printf("Hello %s! This is the C-- programming language!\n", user.Username)
-	fmt.Println("Feel free to type in commands")
-
-	if !isInputFromPipe() {
+	if filename == "" {
 		repl.Start(os.Stdin, os.Stdout)
+		fmt.Printf("Hello %s! This is the C-- programming language!\n", user.Username)
+		fmt.Println("Feel free to type in commands")
+
 	} else {
-		file := os.Stdin
-		repl.Interpret(file, os.Stdout)
+		repl.Interpret(filename, os.Stdout)
 	}
 }
 

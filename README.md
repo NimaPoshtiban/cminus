@@ -55,5 +55,5 @@ The following built-in functions are currently available to use:
 #### Interpret a file
 
 ```
-cat file | go run main.go
+go run main.go --interpret filename
 ```
