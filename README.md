@@ -5,7 +5,7 @@ This is an interpreter for a minimal dynamically typed programming language. It 
 Integers (no floats)
 Boolean (true, false)
 Strings (enclosed with double quotes)
-
+All C defined Operators except ++ & --
 
 ## Built-in Functions :
 
@@ -20,6 +20,8 @@ The following built-in functions are currently available to use:
 - exec() -> execute system command
 - info() -> returns system info
 - flush() -> clears the console
+- str() -> converts types to string
+- int() -> converts string to integer
 
 ## Built-in Macro Functions:
 - quote(expression) -> returns the unevaluated expression
@@ -34,7 +36,9 @@ The following built-in functions are currently available to use:
 - Defining a function:
   ```
   let sum = func(x,y) { x + y };
-  let sum = func(x,y) { return x + y};
+  let sum = func(x,y) {
+     return x + y
+  };
   ```
 - Using recursion:
   ```
@@ -55,5 +59,5 @@ The following built-in functions are currently available to use:
 #### Interpret a file
 
 ```
-go run main.go --interpret filename
+cminus  --interpret filename
 ```

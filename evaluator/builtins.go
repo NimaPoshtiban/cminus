@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strconv"
 )
 
 var builtins = map[string]*object.Builtin{
@@ -130,13 +131,13 @@ var builtins = map[string]*object.Builtin{
 	"info": {
 		Fn: func(args ...object.Object) object.Object {
 			if len(args) != 0 {
-				return newError("wrong number of arguments. got=%d, want=0 or more", len(args))
+				return newError("wrong number of arguments. got=%d, want=0", len(args))
 			}
 			host, _ := os.Hostname()
 			arch := runtime.GOARCH
 			cpu := runtime.NumCPU()
 			os := runtime.GOOS
-			out := fmt.Sprintf("Hostname: %s\n\tArchitecture: %s\n\tCpu Cores: %d\n\tOperating System: %s", host, arch, cpu, os)
+			out := fmt.Sprintf("Hostname: %s\nArchitecture: %s\nCpu Cores: %d\nOperating System: %s", host, arch, cpu, os)
 			return &object.String{Value: out}
 		},
 	},
@@ -151,16 +152,36 @@ var builtins = map[string]*object.Builtin{
 			return &object.String{Value: `
 				len() -> returns the length of the string or the array.
 				push() -> adds the element to the end of the array.
-				join() -> join two arrays into a single array.
+				join() -> joins two arrays into a single array.
 				delete() -> returns the array without the deleted item.
 				print() -> prints the data to the console.
 				exit() -> exits the program by causing it to panic.
 				exec() -> execute system command
 				info() -> returns system info
 				flush() -> clears the console
-				jsonUnmarshal() -> Unmarshal JSON
-				jsonMarshal() -> Marshal JSON
+				str() -> converts types to string
+				int() -> converts string to integer
 										`}
+		},
+	},
+	"str": {
+		Fn: func(args ...object.Object) object.Object {
+			if len(args) != 1 {
+				return newError("wrong number of arguments. got=%d, want=1", len(args))
+			}
+			return &object.String{Value: fmt.Sprintf("%v", args[0].Inspect())}
+		},
+	},
+	"int": {
+		Fn: func(args ...object.Object) object.Object {
+			if len(args) != 1 {
+				return newError("wrong number of arguments. got=%d, want=1", len(args))
+			}
+			if args[0].Type() != object.STRING_OBJ {
+				return newError("argument to `int` must be an STRING, got=%s", args[0].Type())
+			}
+			result, _ := strconv.Atoi(args[0].Inspect())
+			return &object.Integer{int64(result)}
 		},
 	},
 }
