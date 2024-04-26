@@ -12,6 +12,8 @@ func TestEvalIntegerExpression(t *testing.T) {
 		input    string
 		expected int64
 	}{
+		{"2 << 1", 4},
+		{"2 >> 1", 1},
 		{"5", 5},
 		{"10", 10},
 		{"-5", -5},

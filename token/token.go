@@ -23,6 +23,8 @@ const (
 	ASTERISK = "*"
 	SLASH    = "/"
 	MODULO   = "%"
+	LSHIFT   = "<<"
+	RSHIFT   = ">>"
 
 	LT = "<"
 	GT = ">"
