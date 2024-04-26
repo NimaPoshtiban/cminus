@@ -31,6 +31,8 @@ func (l *Lexer) NextToken() token.Token {
 	l.skipWhitespace()
 
 	switch l.ch {
+	case '%':
+		tok = newToken(token.MODULO, l.ch)
 	case '=':
 		if l.peekChar() == '=' {
 			ch := l.ch

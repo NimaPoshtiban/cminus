@@ -18,11 +18,11 @@ const (
 	LOWEST
 	EQUALS      // ==
 	LESSGREATER // < or >
-	SUM         // +
-	PRODUCT     // *
+	SUM         // + -
+	PRODUCT     // * / %
 	PREFIX      // -X or !X
 	CALL        // myFunc(X)
-	INDEX
+	INDEX       // [i]
 )
 
 var precedences = map[token.TokenType]int{
@@ -34,6 +34,7 @@ var precedences = map[token.TokenType]int{
 	token.MINUS:    SUM,
 	token.SLASH:    PRODUCT,
 	token.ASTERISK: PRODUCT,
+	token.MODULO:   PRODUCT,
 	token.LPAREN:   CALL,
 	token.LBRACKET: INDEX,
 }
@@ -63,6 +64,7 @@ func New(l *lexer.Lexer) *Parser {
 	p.infixParseFns = make(map[token.TokenType]infixParseFn)
 	p.registerInfix(token.PLUS, p.parseInfixExpression)
 	p.registerInfix(token.MINUS, p.parseInfixExpression)
+	p.registerInfix(token.MODULO, p.parseInfixExpression)
 	p.registerInfix(token.SLASH, p.parseInfixExpression)
 	p.registerInfix(token.ASTERISK, p.parseInfixExpression)
 	p.registerInfix(token.EQ, p.parseInfixExpression)
