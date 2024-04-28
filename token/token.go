@@ -33,6 +33,9 @@ const (
 	NOT_EQ = "!="
 	LT_EQ  = "<="
 	GT_EQ  = ">="
+
+	LOGICAL_AND = "and"
+	LOGICAL_OR  = "or"
 	// Delimiters
 	COMMA     = ","
 	SEMICOLON = ";"
@@ -68,6 +71,8 @@ var keywords = map[string]TokenType{
 	"if":     IF,
 	"else":   ELSE,
 	"return": RETURN,
+	"and":    LOGICAL_AND,
+	"or":     LOGICAL_OR,
 }
 
 // check to see if the given identifier is  a keyword

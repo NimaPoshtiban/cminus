@@ -148,6 +148,14 @@ func evalInfixExpression(
 		return nativeBoolToBooleanObject(left == right)
 	case operator == "!=":
 		return nativeBoolToBooleanObject(left != right)
+	case left.Type() == object.BOOLEAN_OBJ && right.Type() == object.BOOLEAN_OBJ && operator == "and":
+		left := left.(*object.Boolean).Value
+		right := right.(*object.Boolean).Value
+		return nativeBoolToBooleanObject(left && right)
+	case left.Type() == object.BOOLEAN_OBJ && right.Type() == object.BOOLEAN_OBJ && operator == "or":
+		left := left.(*object.Boolean).Value
+		right := right.(*object.Boolean).Value
+		return nativeBoolToBooleanObject(left || right)
 	default:
 		return newError("unknown operator: %s %s %s",
 			left.Type(), operator, right.Type())
@@ -202,7 +210,6 @@ func evalIntegerInfixExpression(operator string, left, right object.Object) obje
 		return nativeBoolToBooleanObject(leftVal <= rightVal)
 	case ">=":
 		return nativeBoolToBooleanObject(leftVal >= rightVal)
-
 	default:
 		// Return an error if the operator is unknown
 		return newError("unknown operator: %s %s %s", left.Type(), operator, right.Type())

@@ -23,6 +23,20 @@ The following built-in functions are currently available to use:
 - str() -> converts types to string
 - int() -> converts string to integer
 
+## Operators:
+- "=" -> assignment operator
+- "%" -> modulo operator
+- "-" -> minus operator
+- "/" -> division operator
+- "*" -> multiplaction operator
+- "+" -> sum operator
+- ">>" -> right shift operator
+- "<<" -> left shift operator
+- "!" -> not operator
+- "and" -> logical and operator (&&)
+- "or" -> logical or operator (||)
+- All LT GT Operators (<= => > < == != )
+
 ## Built-in Macro Functions:
 - quote(expression) -> returns the unevaluated expression
 - unquote(expression) -> evaluate the expression inside quote
