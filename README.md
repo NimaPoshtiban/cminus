@@ -58,6 +58,15 @@ The following built-in functions are currently available to use:
   ```
   let factorial = func(n) { if (n == 0) { 1 } else { n * factorial(n - 1) } };
   ```
+- Using while loop:
+  ```
+  let j = 10
+  while(j > 0){
+      print(j)
+      let j = j - 1
+  }
+  ```
+  
 - Using Arrays:
   ```
   let numbers = [1,3,7,9];
