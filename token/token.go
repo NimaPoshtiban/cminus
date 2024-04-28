@@ -59,6 +59,7 @@ const (
 	IF       = "if"
 	ELSE     = "else"
 	RETURN   = "return"
+	WHILE    = "while"
 )
 
 // language keywords
@@ -73,6 +74,7 @@ var keywords = map[string]TokenType{
 	"return": RETURN,
 	"and":    LOGICAL_AND,
 	"or":     LOGICAL_OR,
+	"while":  WHILE,
 }
 
 // check to see if the given identifier is  a keyword

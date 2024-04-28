@@ -16,6 +16,8 @@ func Eval(node ast.Node, env *object.Environment) object.Object {
 	switch n := node.(type) {
 	case *ast.Program:
 		return evalProgram(n, env)
+	case *ast.WhileExpression:
+		return evalWhileExpression(n, env)
 	case *ast.ExpressionStatement:
 		return Eval(n.Expression, env)
 	case *ast.BlockStatement:
@@ -262,6 +264,16 @@ func evalIfExpression(ie *ast.IfExpression, env *object.Environment) object.Obje
 	}
 }
 
+func evalWhileExpression(w *ast.WhileExpression, env *object.Environment) object.Object {
+	condition := Eval(w.Condition, env)
+	for isTruthy(condition) {
+		evalBlockStatement(w.Body, env)
+		evalWhileExpression(w, env)
+		condition = Eval(w.Condition, env)
+	}
+	return NULL
+}
+
 func isTruthy(obj object.Object) bool {
 	switch obj {
 	case NULL:
@@ -290,7 +302,6 @@ func evalIdentifier(
 	node *ast.Identifier,
 	env *object.Environment,
 ) object.Object {
-
 	if val, ok := env.Get(node.Value); ok {
 		return val
 	}

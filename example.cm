@@ -1,4 +1,11 @@
 print("Testing interpretation proccess...")
+let i = 3 
+
+while( i > 0 ){
+    let i = i -1
+    print(i)
+}
+
 let factorial = func(n) {
      if (n == 0) {
          1 
@@ -13,13 +20,13 @@ let mod = func(x,y){
         return x 
     }
     return x-y*(x/y)
-};
+}
 if(mod(result,2)==0){
     print("number is even")
 }else{
     print("number is odd")
 }
 
-if(true and false or true){
-    print("It's true)
+if( true and false or true ){
+    print("It's true")
 }
