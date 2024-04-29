@@ -468,8 +468,8 @@ func (p *Parser) peekTokenIs(t token.TokenType) bool {
 }
 
 func (p *Parser) peekError(t token.TokenType) {
-	msg := fmt.Sprintf("expected next token to be %s, got %s instead",
-		t, p.peekToken.Type)
+	msg := fmt.Sprintf("at line %d expected next token to be %s, got %s instead",
+		p.l.GetCurrentLine(), t, p.peekToken.Type)
 
 	p.errors = append(p.errors, msg)
 }
@@ -493,7 +493,7 @@ func (p *Parser) registerInfix(tokenType token.TokenType, fn infixParseFn) {
 }
 
 func (p *Parser) noPrefixParseFnError(t token.TokenType) {
-	msg := fmt.Sprintf("no prefix parse function for %s found", t)
+	msg := fmt.Sprintf("at line %d no prefix parse function for %s found", p.l.GetCurrentLine(), t)
 	p.errors = append(p.errors, msg)
 }
 
