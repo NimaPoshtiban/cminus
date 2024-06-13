@@ -6,8 +6,10 @@ import (
 	"cminus/lexer"
 	"cminus/object"
 	"cminus/parser"
+	"encoding/json"
 	"fmt"
 	"io"
+	"io/fs"
 	"os"
 )
 
@@ -105,4 +107,15 @@ func printParseErrors(out io.Writer, errors []string) {
 	for _, msg := range errors {
 		io.WriteString(out, red+"\t"+msg+"\t"+reset+"\n")
 	}
+}
+
+func GeneratesAST(filename string, output string) {
+	text, _ := os.ReadFile(filename)
+
+	l := lexer.New(string(text))
+	p := parser.New(l)
+
+	ast := p.ParseProgram()
+	data, _ := json.Marshal(ast)
+	os.WriteFile(output, data, fs.ModeAppend)
 }

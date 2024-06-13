@@ -82,5 +82,10 @@ The following built-in functions are currently available to use:
 #### Interpret a file
 
 ```
-cminus  --interpret filename
+cminus  --interpret <filename>
+```
+
+#### Generate JSON ast and save it to a file
+```
+cminus --interpret <filename> --ast <filename>
 ```

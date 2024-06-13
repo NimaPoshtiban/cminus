@@ -16,8 +16,14 @@ func main() {
 		log.Fatal(err)
 	}
 	var filename string
+	var ast string
 	flag.StringVar(&filename, "interpret", "", "interpret the given file")
+	flag.StringVar(&ast, "ast", "", "generates program ast and save it to a file in a json format")
 	flag.Parse()
+
+	if ast != "" && filename != "" {
+		repl.GeneratesAST(filename, ast)
+	}
 
 	if filename == "" {
 		repl.Start(os.Stdin, os.Stdout)
@@ -27,9 +33,4 @@ func main() {
 	} else {
 		repl.Interpret(filename, os.Stdout)
 	}
-}
-
-func isInputFromPipe() bool {
-	info, _ := os.Stdin.Stat()
-	return (info.Mode() & os.ModeCharDevice) == 0
 }

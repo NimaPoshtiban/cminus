@@ -1,0 +1,708 @@
+{
+    "Statements": [
+        {
+            "Token": {
+                "Type": "IDENT",
+                "Literal": "print"
+            },
+            "Expression": {
+                "Token": {
+                    "Type": "(",
+                    "Literal": "("
+                },
+                "Function": {
+                    "Token": {
+                        "Type": "IDENT",
+                        "Literal": "print"
+                    },
+                    "Value": "print"
+                },
+                "Arguments": [
+                    {
+                        "Token": {
+                            "Type": "STRING",
+                            "Literal": "Testing interpretation proccess..."
+                        },
+                        "Value": "Testing interpretation proccess..."
+                    }
+                ]
+            }
+        },
+        {
+            "Token": {
+                "Type": "let",
+                "Literal": "let"
+            },
+            "Name": {
+                "Token": {
+                    "Type": "IDENT",
+                    "Literal": "i"
+                },
+                "Value": "i"
+            },
+            "Value": {
+                "Token": {
+                    "Type": "INT",
+                    "Literal": "3"
+                },
+                "Value": 3
+            }
+        },
+        {
+            "Token": {
+                "Type": "while",
+                "Literal": "while"
+            },
+            "Expression": {
+                "Token": {
+                    "Type": "while",
+                    "Literal": "while"
+                },
+                "Condition": {
+                    "Token": {
+                        "Type": "\u003e",
+                        "Literal": "\u003e"
+                    },
+                    "Left": {
+                        "Token": {
+                            "Type": "IDENT",
+                            "Literal": "i"
+                        },
+                        "Value": "i"
+                    },
+                    "Operator": "\u003e",
+                    "Right": {
+                        "Token": {
+                            "Type": "INT",
+                            "Literal": "0"
+                        },
+                        "Value": 0
+                    }
+                },
+                "Body": {
+                    "Token": {
+                        "Type": "{",
+                        "Literal": "{"
+                    },
+                    "Statements": [
+                        {
+                            "Token": {
+                                "Type": "let",
+                                "Literal": "let"
+                            },
+                            "Name": {
+                                "Token": {
+                                    "Type": "IDENT",
+                                    "Literal": "i"
+                                },
+                                "Value": "i"
+                            },
+                            "Value": {
+                                "Token": {
+                                    "Type": "-",
+                                    "Literal": "-"
+                                },
+                                "Left": {
+                                    "Token": {
+                                        "Type": "IDENT",
+                                        "Literal": "i"
+                                    },
+                                    "Value": "i"
+                                },
+                                "Operator": "-",
+                                "Right": {
+                                    "Token": {
+                                        "Type": "INT",
+                                        "Literal": "1"
+                                    },
+                                    "Value": 1
+                                }
+                            }
+                        },
+                        {
+                            "Token": {
+                                "Type": "IDENT",
+                                "Literal": "print"
+                            },
+                            "Expression": {
+                                "Token": {
+                                    "Type": "(",
+                                    "Literal": "("
+                                },
+                                "Function": {
+                                    "Token": {
+                                        "Type": "IDENT",
+                                        "Literal": "print"
+                                    },
+                                    "Value": "print"
+                                },
+                                "Arguments": [
+                                    {
+                                        "Token": {
+                                            "Type": "IDENT",
+                                            "Literal": "i"
+                                        },
+                                        "Value": "i"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "Token": {
+                "Type": "let",
+                "Literal": "let"
+            },
+            "Name": {
+                "Token": {
+                    "Type": "IDENT",
+                    "Literal": "factorial"
+                },
+                "Value": "factorial"
+            },
+            "Value": {
+                "Token": {
+                    "Type": "func",
+                    "Literal": "func"
+                },
+                "Parameters": [
+                    {
+                        "Token": {
+                            "Type": "IDENT",
+                            "Literal": "n"
+                        },
+                        "Value": "n"
+                    }
+                ],
+                "Body": {
+                    "Token": {
+                        "Type": "{",
+                        "Literal": "{"
+                    },
+                    "Statements": [
+                        {
+                            "Token": {
+                                "Type": "if",
+                                "Literal": "if"
+                            },
+                            "Expression": {
+                                "Token": {
+                                    "Type": "if",
+                                    "Literal": "if"
+                                },
+                                "Condition": {
+                                    "Token": {
+                                        "Type": "==",
+                                        "Literal": "=="
+                                    },
+                                    "Left": {
+                                        "Token": {
+                                            "Type": "IDENT",
+                                            "Literal": "n"
+                                        },
+                                        "Value": "n"
+                                    },
+                                    "Operator": "==",
+                                    "Right": {
+                                        "Token": {
+                                            "Type": "INT",
+                                            "Literal": "0"
+                                        },
+                                        "Value": 0
+                                    }
+                                },
+                                "Consequence": {
+                                    "Token": {
+                                        "Type": "{",
+                                        "Literal": "{"
+                                    },
+                                    "Statements": [
+                                        {
+                                            "Token": {
+                                                "Type": "INT",
+                                                "Literal": "1"
+                                            },
+                                            "Expression": {
+                                                "Token": {
+                                                    "Type": "INT",
+                                                    "Literal": "1"
+                                                },
+                                                "Value": 1
+                                            }
+                                        }
+                                    ]
+                                },
+                                "Alternative": {
+                                    "Token": {
+                                        "Type": "{",
+                                        "Literal": "{"
+                                    },
+                                    "Statements": [
+                                        {
+                                            "Token": {
+                                                "Type": "IDENT",
+                                                "Literal": "n"
+                                            },
+                                            "Expression": {
+                                                "Token": {
+                                                    "Type": "*",
+                                                    "Literal": "*"
+                                                },
+                                                "Left": {
+                                                    "Token": {
+                                                        "Type": "IDENT",
+                                                        "Literal": "n"
+                                                    },
+                                                    "Value": "n"
+                                                },
+                                                "Operator": "*",
+                                                "Right": {
+                                                    "Token": {
+                                                        "Type": "(",
+                                                        "Literal": "("
+                                                    },
+                                                    "Function": {
+                                                        "Token": {
+                                                            "Type": "IDENT",
+                                                            "Literal": "factorial"
+                                                        },
+                                                        "Value": "factorial"
+                                                    },
+                                                    "Arguments": [
+                                                        {
+                                                            "Token": {
+                                                                "Type": "-",
+                                                                "Literal": "-"
+                                                            },
+                                                            "Left": {
+                                                                "Token": {
+                                                                    "Type": "IDENT",
+                                                                    "Literal": "n"
+                                                                },
+                                                                "Value": "n"
+                                                            },
+                                                            "Operator": "-",
+                                                            "Right": {
+                                                                "Token": {
+                                                                    "Type": "INT",
+                                                                    "Literal": "1"
+                                                                },
+                                                                "Value": 1
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "Token": {
+                "Type": "let",
+                "Literal": "let"
+            },
+            "Name": {
+                "Token": {
+                    "Type": "IDENT",
+                    "Literal": "result"
+                },
+                "Value": "result"
+            },
+            "Value": {
+                "Token": {
+                    "Type": "(",
+                    "Literal": "("
+                },
+                "Function": {
+                    "Token": {
+                        "Type": "IDENT",
+                        "Literal": "factorial"
+                    },
+                    "Value": "factorial"
+                },
+                "Arguments": [
+                    {
+                        "Token": {
+                            "Type": "INT",
+                            "Literal": "8"
+                        },
+                        "Value": 8
+                    }
+                ]
+            }
+        },
+        {
+            "Token": {
+                "Type": "let",
+                "Literal": "let"
+            },
+            "Name": {
+                "Token": {
+                    "Type": "IDENT",
+                    "Literal": "mod"
+                },
+                "Value": "mod"
+            },
+            "Value": {
+                "Token": {
+                    "Type": "func",
+                    "Literal": "func"
+                },
+                "Parameters": [
+                    {
+                        "Token": {
+                            "Type": "IDENT",
+                            "Literal": "x"
+                        },
+                        "Value": "x"
+                    },
+                    {
+                        "Token": {
+                            "Type": "IDENT",
+                            "Literal": "y"
+                        },
+                        "Value": "y"
+                    }
+                ],
+                "Body": {
+                    "Token": {
+                        "Type": "{",
+                        "Literal": "{"
+                    },
+                    "Statements": [
+                        {
+                            "Token": {
+                                "Type": "if",
+                                "Literal": "if"
+                            },
+                            "Expression": {
+                                "Token": {
+                                    "Type": "if",
+                                    "Literal": "if"
+                                },
+                                "Condition": {
+                                    "Token": {
+                                        "Type": "==",
+                                        "Literal": "=="
+                                    },
+                                    "Left": {
+                                        "Token": {
+                                            "Type": "IDENT",
+                                            "Literal": "y"
+                                        },
+                                        "Value": "y"
+                                    },
+                                    "Operator": "==",
+                                    "Right": {
+                                        "Token": {
+                                            "Type": "INT",
+                                            "Literal": "0"
+                                        },
+                                        "Value": 0
+                                    }
+                                },
+                                "Consequence": {
+                                    "Token": {
+                                        "Type": "{",
+                                        "Literal": "{"
+                                    },
+                                    "Statements": [
+                                        {
+                                            "Token": {
+                                                "Type": "return",
+                                                "Literal": "return"
+                                            },
+                                            "ReturnValue": {
+                                                "Token": {
+                                                    "Type": "IDENT",
+                                                    "Literal": "x"
+                                                },
+                                                "Value": "x"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "Alternative": null
+                            }
+                        },
+                        {
+                            "Token": {
+                                "Type": "return",
+                                "Literal": "return"
+                            },
+                            "ReturnValue": {
+                                "Token": {
+                                    "Type": "-",
+                                    "Literal": "-"
+                                },
+                                "Left": {
+                                    "Token": {
+                                        "Type": "IDENT",
+                                        "Literal": "x"
+                                    },
+                                    "Value": "x"
+                                },
+                                "Operator": "-",
+                                "Right": {
+                                    "Token": {
+                                        "Type": "*",
+                                        "Literal": "*"
+                                    },
+                                    "Left": {
+                                        "Token": {
+                                            "Type": "IDENT",
+                                            "Literal": "y"
+                                        },
+                                        "Value": "y"
+                                    },
+                                    "Operator": "*",
+                                    "Right": {
+                                        "Token": {
+                                            "Type": "/",
+                                            "Literal": "/"
+                                        },
+                                        "Left": {
+                                            "Token": {
+                                                "Type": "IDENT",
+                                                "Literal": "x"
+                                            },
+                                            "Value": "x"
+                                        },
+                                        "Operator": "/",
+                                        "Right": {
+                                            "Token": {
+                                                "Type": "IDENT",
+                                                "Literal": "y"
+                                            },
+                                            "Value": "y"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "Token": {
+                "Type": "if",
+                "Literal": "if"
+            },
+            "Expression": {
+                "Token": {
+                    "Type": "if",
+                    "Literal": "if"
+                },
+                "Condition": {
+                    "Token": {
+                        "Type": "==",
+                        "Literal": "=="
+                    },
+                    "Left": {
+                        "Token": {
+                            "Type": "(",
+                            "Literal": "("
+                        },
+                        "Function": {
+                            "Token": {
+                                "Type": "IDENT",
+                                "Literal": "mod"
+                            },
+                            "Value": "mod"
+                        },
+                        "Arguments": [
+                            {
+                                "Token": {
+                                    "Type": "IDENT",
+                                    "Literal": "result"
+                                },
+                                "Value": "result"
+                            },
+                            {
+                                "Token": {
+                                    "Type": "INT",
+                                    "Literal": "2"
+                                },
+                                "Value": 2
+                            }
+                        ]
+                    },
+                    "Operator": "==",
+                    "Right": {
+                        "Token": {
+                            "Type": "INT",
+                            "Literal": "0"
+                        },
+                        "Value": 0
+                    }
+                },
+                "Consequence": {
+                    "Token": {
+                        "Type": "{",
+                        "Literal": "{"
+                    },
+                    "Statements": [
+                        {
+                            "Token": {
+                                "Type": "IDENT",
+                                "Literal": "print"
+                            },
+                            "Expression": {
+                                "Token": {
+                                    "Type": "(",
+                                    "Literal": "("
+                                },
+                                "Function": {
+                                    "Token": {
+                                        "Type": "IDENT",
+                                        "Literal": "print"
+                                    },
+                                    "Value": "print"
+                                },
+                                "Arguments": [
+                                    {
+                                        "Token": {
+                                            "Type": "STRING",
+                                            "Literal": "number is even"
+                                        },
+                                        "Value": "number is even"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Alternative": {
+                    "Token": {
+                        "Type": "{",
+                        "Literal": "{"
+                    },
+                    "Statements": [
+                        {
+                            "Token": {
+                                "Type": "IDENT",
+                                "Literal": "print"
+                            },
+                            "Expression": {
+                                "Token": {
+                                    "Type": "(",
+                                    "Literal": "("
+                                },
+                                "Function": {
+                                    "Token": {
+                                        "Type": "IDENT",
+                                        "Literal": "print"
+                                    },
+                                    "Value": "print"
+                                },
+                                "Arguments": [
+                                    {
+                                        "Token": {
+                                            "Type": "STRING",
+                                            "Literal": "number is odd"
+                                        },
+                                        "Value": "number is odd"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "Token": {
+                "Type": "if",
+                "Literal": "if"
+            },
+            "Expression": {
+                "Token": {
+                    "Type": "if",
+                    "Literal": "if"
+                },
+                "Condition": {
+                    "Token": {
+                        "Type": "or",
+                        "Literal": "or"
+                    },
+                    "Left": {
+                        "Token": {
+                            "Type": "and",
+                            "Literal": "and"
+                        },
+                        "Left": {
+                            "Token": {
+                                "Type": "true",
+                                "Literal": "true"
+                            },
+                            "Value": true
+                        },
+                        "Operator": "and",
+                        "Right": {
+                            "Token": {
+                                "Type": "false",
+                                "Literal": "false"
+                            },
+                            "Value": false
+                        }
+                    },
+                    "Operator": "or",
+                    "Right": {
+                        "Token": {
+                            "Type": "true",
+                            "Literal": "true"
+                        },
+                        "Value": true
+                    }
+                },
+                "Consequence": {
+                    "Token": {
+                        "Type": "{",
+                        "Literal": "{"
+                    },
+                    "Statements": [
+                        {
+                            "Token": {
+                                "Type": "IDENT",
+                                "Literal": "print"
+                            },
+                            "Expression": {
+                                "Token": {
+                                    "Type": "(",
+                                    "Literal": "("
+                                },
+                                "Function": {
+                                    "Token": {
+                                        "Type": "IDENT",
+                                        "Literal": "print"
+                                    },
+                                    "Value": "print"
+                                },
+                                "Arguments": [
+                                    {
+                                        "Token": {
+                                            "Type": "STRING",
+                                            "Literal": "It's true"
+                                        },
+                                        "Value": "It's true"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Alternative": null
+            }
+        }
+    ]
+}
