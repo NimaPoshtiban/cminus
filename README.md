@@ -22,6 +22,8 @@ The following built-in functions are currently available to use:
 - flush() -> clears the console
 - str() -> converts types to string
 - int() -> converts string to integer
+- sizeof() -> returns the size of the object
+- alert(message)-> shows the entered message in a GUI windows (only for Windows)
 
 ## Operators:
 - "=" -> assignment operator

@@ -2,6 +2,9 @@
 // Add Built-in functions here
 package evaluator
 
+// #include "cfunctions.h"
+import "C"
+
 import (
 	"cminus/object"
 	"fmt"
@@ -10,6 +13,7 @@ import (
 	"os/exec"
 	"runtime"
 	"strconv"
+	"unsafe"
 )
 
 var builtins = map[string]*object.Builtin{
@@ -35,6 +39,15 @@ var builtins = map[string]*object.Builtin{
 				fmt.Println(arg.Inspect())
 			}
 			return &object.Null{}
+		},
+	},
+	"alert":{
+		Fn: func (args... object.Object)object.Object  {
+			if runtime.GOOS == "windows" {
+				C.alert(C.CString(args[0].Inspect()));
+				return &object.Null{}
+			}
+			return &object.String{"Only implemented for windows"}
 		},
 	},
 	"exit": {
@@ -182,6 +195,15 @@ var builtins = map[string]*object.Builtin{
 			}
 			result, _ := strconv.Atoi(args[0].Inspect())
 			return &object.Integer{int64(result)}
+		},
+	},
+	"sizeof": {
+		Fn: func(args ...object.Object) object.Object {
+			if len(args) != 1 {
+				return newError("wrong number of arguments. got=%d, want=1", len(args))
+			}
+			size := unsafe.Sizeof(args[0])
+			return &object.Integer{int64(size)}
 		},
 	},
 }
